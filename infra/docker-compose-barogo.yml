@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  barogo-mysql-local:
+    image: mysql:8.0.33
+    container_name: barogo-mysql-local
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=barogo
+      - TZ=Asia/Seoul
+      - LC_ALL=C.UTF-8
+
+    ports:
+      - "20382:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      #- ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - barogo-network
+
+
+  barogo-user-api:
+    image: barogo-user-api:latest
+    restart: always
+    ports:
+      - "20381:20381"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://barogo-mysql-local:3306/barogo
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=1234
+    networks:
+      - barogo-network
+
+networks:
+  barogo-network:
+    driver: bridge
+
+
+volumes:
+  db_data:

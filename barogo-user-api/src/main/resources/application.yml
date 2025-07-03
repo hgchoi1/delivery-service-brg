@@ -1,0 +1,43 @@
+server:
+  port: 20381
+
+
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # local
+    url: jdbc:mysql://localhost:20382/barogo?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8
+    username: root
+    password: 1234
+#    url: ${SPRING_DATASOURCE_URL}
+#    username: ${SPRING_DATASOURCE_USERNAME}
+#    password: ${SPRING_DATASOURCE_PASSWORD}
+  jpa:
+    open-in-view: false
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+      dialect: MySQL56InnoDBSpatialDialect
+
+loggind:
+  level:
+    root: INFO
+    com.barogo: TRACE
+    org:
+      springframework:
+        security: DEBUG
+
+application:
+  security:
+    jwt:
+      secret-key: jQ2T52iDC5JftAltio7FO0aKmIdE5zZCoP6KdFCqM0d37kluAevwN4JZaaHWXQ8Y
+      expiration: 604800000
+      refresh-token:
+        expiration: 604800000 # 7 days
+

@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+clean{
+    enabled = false
+}
+bootJar{
+    enabled = false
+}
+bootBuildImage{
+    enabled = false
+}
+jar{
+    enabled = true
+}
+
+repositories {
+    mavenCentral()
+}

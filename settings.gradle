@@ -1,0 +1,4 @@
+rootProject.name = 'barogo'
+include 'barogo-user-api'
+include 'common-model'
+
