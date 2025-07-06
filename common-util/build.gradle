@@ -3,7 +3,7 @@ plugins {
 }
 
 clean{
-    enabled = true
+    enabled = false
 }
 bootJar{
     enabled = false

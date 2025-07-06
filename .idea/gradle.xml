@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/barogo-user-api" />
             <option value="$PROJECT_DIR$/common-model" />
+            <option value="$PROJECT_DIR$/common-util" />
           </set>
         </option>
       </GradleProjectSettings>
